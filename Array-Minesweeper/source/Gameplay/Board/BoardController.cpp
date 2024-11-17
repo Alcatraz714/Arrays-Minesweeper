@@ -1,19 +1,20 @@
 #include "../../header/Gameplay/Board/BoardController.h"
+#include "../../header/Gameplay/Board/BoardView.h"
+//#include "../../header/Gameplay/Cell/CellController.h"
 
 namespace Gameplay
 {
 	namespace Board
 	{
-		//using namespace Cell;
 
 		BoardController::BoardController()
 		{
-			//Yet to implement
+			board_view = new BoardView(this);
 		}
 
 		BoardController::~BoardController()
 		{
-			//Yet to implement
+			destroy();
 		}
 
 		void BoardController::createBoard()
@@ -23,17 +24,17 @@ namespace Gameplay
 
 		void BoardController::initialize()
 		{
-			//Yet to implement
+			board_view->initialize();
 		}
 
 		void BoardController::update()
 		{
-			//Yet to implement
+			board_view->update();
 		}
 
 		void BoardController::render()
 		{
-			//Yet to implement
+			board_view->render();
 		}
 
 		void BoardController::reset()
@@ -48,7 +49,7 @@ namespace Gameplay
 
 		void BoardController::destroy()
 		{
-			//Yet to implement
+			delete(board_view);
 		}
 	}
 }
