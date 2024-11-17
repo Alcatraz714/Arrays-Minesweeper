@@ -41,3 +41,4 @@ namespace Gameplay
 			delete(board_controller);
 		}
 	}
+}
