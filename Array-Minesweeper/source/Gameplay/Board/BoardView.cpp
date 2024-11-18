@@ -9,7 +9,7 @@ namespace Gameplay
     namespace Board
     {
         using namespace UI::UIElement;
-        //using namespace Cell;
+        using namespace Cell;
         using namespace Global;
 
         BoardView::BoardView(BoardController* controller)
@@ -27,11 +27,11 @@ namespace Gameplay
 
         void BoardView::initialize()
         {
-            initializeBackgroundImage();
+            initializeBackgroudImage();
             initializeBoardImage();
         }
 
-        void BoardView::initializeBackgroundImage()
+        void BoardView::initializeBackgroudImage()
         {
             sf::RenderWindow* game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
 
@@ -55,6 +55,16 @@ namespace Gameplay
         {
             background_image->render();
             board_image->render();
+        }
+
+        float BoardView::getCellWidth()
+        {
+            return (board_width - board_width_offset) / static_cast<float>(BoardController::number_of_colums);
+        }
+
+        float BoardView::getCellHeight()
+        {
+            return (board_height - board_height_offset) / static_cast<float>(BoardController::number_of_rows);
         }
     }
 }
