@@ -136,6 +136,9 @@
     <ClCompile Include="source\Gameplay\Board\BoardController.cpp" />
     <ClCompile Include="source\Gameplay\Board\BoardService.cpp" />
     <ClCompile Include="source\Gameplay\Board\BoardView.cpp" />
+    <ClCompile Include="source\Gameplay\Cell\CellController.cpp" />
+    <ClCompile Include="source\Gameplay\Cell\CellModel.cpp" />
+    <ClCompile Include="source\Gameplay\Cell\CellView.cpp" />
     <ClCompile Include="source\Gameplay\GameplayController.cpp" />
     <ClCompile Include="source\Gameplay\GameplayService.cpp" />
     <ClCompile Include="source\UI\Instructions\InstructionsScreenUIController.cpp" />
@@ -161,6 +164,9 @@
     <ClInclude Include="header\Gameplay\Board\BoardController.h" />
     <ClInclude Include="header\Gameplay\Board\BoardService.h" />
     <ClInclude Include="header\Gameplay\Board\BoardView.h" />
+    <ClInclude Include="header\Gameplay\Cell\CellController.h" />
+    <ClInclude Include="header\Gameplay\Cell\CellModel.h" />
+    <ClInclude Include="header\Gameplay\Cell\CellView.h" />
     <ClInclude Include="header\Gameplay\GameplayController.h" />
     <ClInclude Include="header\Gameplay\GameplayService.h" />
     <ClInclude Include="header\Main\GameService.h" />
