@@ -39,6 +39,11 @@ namespace UI
             }
         }
 
+        void ImageView::setTextureRect(sf::IntRect texture_rect)
+        {
+            image_sprite.setTextureRect(texture_rect);
+        }
+
         void ImageView::setScale(float width, float height)
         {
             float scale_x = width / image_sprite.getTexture()->getSize().x;

@@ -5,22 +5,25 @@ namespace Gameplay
 {
     namespace Board
     {
-        using namespace UI::UIElement;
         class BoardController;
 
         class BoardView
         {
         private:
-            BoardController* board_controller;
-            
-            ImageView* background_image;
-            ImageView* board_image;
 
-            const float background_alpha = 85.f;
+            const float board_width_offset = 115.f;
+            const float board_height_offset = 329.f;
+
             const float board_width = 866.f;
             const float board_height = 1080.f;
 
-            void initializeBackgroundImage();
+            const float background_alpha = 85.f;
+
+            BoardController* board_controller;
+            UI::UIElement::ImageView* board_image;
+            UI::UIElement::ImageView* background_image;
+
+            void initializeBackgroudImage();
             void initializeBoardImage();
 
         public:
@@ -30,7 +33,9 @@ namespace Gameplay
             void initialize();
             void update();
             void render();
-            
+
+            float getCellWidth();
+            float getCellHeight();
         };
     }
 }
