@@ -63,6 +63,9 @@ namespace UI
 			case FontType::BUBBLE_BOBBLE:
 				text.setFont(font_bubble_bobble);
 				break;
+			case FontType::ROBOTO:
+				text.setFont(font_DS_DIGIB);
+				break;
 			case FontType::DS_DIGIB:
 				text.setFont(font_DS_DIGIB);
 				break;

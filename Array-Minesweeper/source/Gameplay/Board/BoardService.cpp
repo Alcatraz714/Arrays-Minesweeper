@@ -39,7 +39,6 @@ namespace Gameplay
 			return board_controller->mines_count;
 		}
 
-
 		void BoardService::resetBoard()
 		{
 			board_controller->reset();
@@ -49,7 +48,5 @@ namespace Gameplay
 		{
 			delete(board_controller);
 		}
-
-
 	}
 }
