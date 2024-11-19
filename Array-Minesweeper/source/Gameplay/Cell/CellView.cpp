@@ -1,7 +1,5 @@
 #include "../../header/Gameplay/Cell/CellView.h"
-
 #include <iostream>
-
 #include "../../header/Gameplay/Cell/CellModel.h"
 #include "../../header/Gameplay/Cell/CellController.h"
 #include "../../header/Global/Config.h"
@@ -82,10 +80,10 @@ namespace Gameplay
 
         void CellView::registerButtonCallback()
         {
-            //cell_button->registerCallbackFuntion(std::bind(&CellView::cellButtonCallback, this, std::placeholders::_1));
+            cell_button->registerCallbackFuntion(std::bind(&CellView::cellButtonCallback, this, std::placeholders::_1));
         }
 
-        /*void CellView::cellButtonCallback(ButtonType button_type)
+        void CellView::cellButtonCallback(ButtonType button_type)
         {
             switch (button_type)
             {
@@ -96,6 +94,6 @@ namespace Gameplay
                 cell_controller->flagCell();
                 break;
             }
-        }*/
+        }
     }
 }

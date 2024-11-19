@@ -1,13 +1,13 @@
 #include "../../header/Gameplay/GameplayController.h"
 #include "../../header/Gameplay/Board/BoardService.h"
-//#include "../../header/Time/TimeService.h"
+#include "../../header/Time/TimeService.h"
 #include "../../header/Global/ServiceLocator.h"
 
 namespace Gameplay
 {
     using namespace Board;
     using namespace Global;
-    //using namespace Time;
+    using namespace Time;
 
     GameplayController::GameplayController() {}
 
@@ -17,12 +17,12 @@ namespace Gameplay
 
     void GameplayController::update()
     {
-        //updateRemainingTime();
+        updateRemainingTime();
     }
 
     void GameplayController::render() {  }
 
-    //void GameplayController::updateRemainingTime() { remaining_time -= ServiceLocator::getInstance()->getTimeService()->getDeltaTime(); }
+    void GameplayController::updateRemainingTime() { remaining_time -= ServiceLocator::getInstance()->getTimeService()->getDeltaTime(); }
 
     void GameplayController::restart()
     {
@@ -32,7 +32,7 @@ namespace Gameplay
 
     int GameplayController::getMinesCount()
     {
-        //return ServiceLocator::getInstance()->getBoardService()->getMinesCount();
+        return ServiceLocator::getInstance()->getBoardService()->getMinesCount();
         return 0;
     }
 

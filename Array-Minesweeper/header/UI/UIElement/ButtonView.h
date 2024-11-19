@@ -6,11 +6,17 @@ namespace UI
 {
 	namespace UIElement
 	{
+		enum class ButtonType
+		{
+			LEFT_MOUSE_BUTTON,
+			RIGHT_MOUSE_BUTTON,
+		};
+
 		class ButtonView : public ImageView
 		{
 		private:
 			// Define a function pointer type for the callback function
-			using CallbackFunction = std::function<void()>;
+			using CallbackFunction = std::function<void(ButtonType)>;
 
 			// Store the callback function
 			CallbackFunction callback_function = nullptr;
@@ -21,7 +27,8 @@ namespace UI
 			sf::String button_title;
 
 			virtual void handleButtonInteraction();
-			virtual bool clickedButton(sf::Sprite* button_sprite, sf::Vector2f mouse_position);
+			virtual bool clickedLeftMouseButton(sf::Sprite* button_sprite, sf::Vector2f mouse_position);
+			virtual bool clickedRightMouseButton(sf::Sprite* button_sprite, sf::Vector2f mouse_position);
 
 		public:
 			ButtonView();
