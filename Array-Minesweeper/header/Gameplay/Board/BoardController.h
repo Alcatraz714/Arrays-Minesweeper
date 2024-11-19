@@ -13,7 +13,7 @@ namespace Gameplay
         public:
             static const int number_of_rows = 9;
             static const int number_of_colums = 9;
-            static const int mines_count = 8;
+            static const int mines_count = 10;
 
             BoardController();
             ~BoardController();
@@ -32,6 +32,7 @@ namespace Gameplay
             void destroy();
             void resetBoard();
             void deleteBoard();
+            int getMinesCount();
         };
     }
 }

@@ -9,6 +9,7 @@ namespace UI
 		{
 			BUBBLE_BOBBLE,
 			DS_DIGIB,
+			ROBOTO,
 		};
 
 		class TextView : public UIView
@@ -18,6 +19,7 @@ namespace UI
 
 			static sf::Font font_bubble_bobble;
 			static sf::Font font_DS_DIGIB;
+			static sf::Font font_roboto;
 
 			sf::Text text;
 
