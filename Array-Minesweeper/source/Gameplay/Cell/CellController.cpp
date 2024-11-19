@@ -49,7 +49,7 @@ namespace Gameplay
 				break;
 			}
 
-			//ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::FLAG);
+			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::FLAG);
 		}
 
 		void CellController::openCell()
