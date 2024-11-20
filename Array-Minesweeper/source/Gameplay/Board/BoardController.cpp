@@ -1,12 +1,18 @@
 #include "../../header/Gameplay/Board/BoardController.h"
 #include "../../header/Gameplay/Board/BoardView.h"
 #include "../../header/Gameplay/Cell/CellController.h"
+#include "../../header/Gameplay/Cell/CellModel.h"
+#include "../../header/Global/ServiceLocator.h"
+#include "../../header/Sound/SoundService.h"
 
 namespace Gameplay
 {
 	namespace Board
 	{
 		using namespace Cell;
+		using namespace UI::UIElement;
+		using namespace Global;
+		using namespace Sound;
 
 		BoardController::BoardController()
 		{
@@ -34,6 +40,7 @@ namespace Gameplay
 		{
 			board_view->initialize();
 			initializeCells();
+			reset();
 		}
 
 		void BoardController::initializeCells()
@@ -79,6 +86,20 @@ namespace Gameplay
 		void BoardController::reset()
 		{
 			resetBoard();
+			flagged_cells = 0;
+		}
+
+		void BoardController::processCellInput(Cell::CellController* cell_controller, UI::UIElement::ButtonType button_type)
+		{
+			switch (button_type)
+			{
+			case UI::UIElement::ButtonType::LEFT_MOUSE_BUTTON:
+				openCell(cell_controller->getCellPosition());
+				break;
+			case UI::UIElement::ButtonType::RIGHT_MOUSE_BUTTON:
+				flagCell(cell_controller->getCellPosition()); // New Flagging Method - we sue board class now
+				break;
+			}
 		}
 
 		void BoardController::resetBoard()
@@ -103,9 +124,35 @@ namespace Gameplay
 			}
 		}
 
+		void BoardController::openCell(sf::Vector2i cell_position)
+		{
+			if (board[cell_position.x][cell_position.y]->canOpenCell())
+			{
+				board[cell_position.x][cell_position.y]->openCell();
+			}
+		}
+
+		void BoardController::flagCell(sf::Vector2i cell_position)
+		{
+			switch (board[cell_position.x][cell_position.y]->getCellState())
+			{
+			case::Gameplay::Cell::CellState::FLAGGED:
+				ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::FLAG);
+				flagged_cells--; //Used to update Gameplay UI
+				break;
+			case::Gameplay::Cell::CellState::HIDDEN:
+				ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::FLAG);
+				flagged_cells++; //Used to update Gameplay UI
+				break;
+			}
+
+			board[cell_position.x][cell_position.y]->flagCell();
+		}
+
 		int BoardController::getMinesCount()
 		{
-			return mines_count;
+			//return mines_count;
+			return mines_count - flagged_cells;
 		}
 
 		void BoardController::destroy()
