@@ -28,8 +28,10 @@ namespace Gameplay
 
             void flagCell();
             void openCell();
+            bool canOpenCell();
 
             CellState getCellState();
+            void setCellState(CellState state);
             CellType getCellType();
             sf::Vector2i getCellPosition();
             int getMinesAround();

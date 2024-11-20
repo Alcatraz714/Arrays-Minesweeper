@@ -8,6 +8,8 @@ namespace Gameplay
 {
     namespace Board
     {
+        using namespace Cell;
+        using namespace UI::UIElement;
         class BoardService
         {
         private:
@@ -25,6 +27,7 @@ namespace Gameplay
             int getMinesCount();
 
             void resetBoard();
+            void processCellInput(CellController* cell_controller, ButtonType button_type);
         };
     }
 }
