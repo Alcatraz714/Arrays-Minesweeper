@@ -129,13 +129,13 @@ namespace Gameplay
 		{
 			if (board[cell_position.x][cell_position.y]->canOpenCell())
 			{
-				//board[cell_position.x][cell_position.y]->openCell();
+				//board[cell_position.x][cell_position.y]->openCell(); - old implementation
 				if (board_state == BoardState::FIRST_CELL)
 				{
 					populateBoard(cell_position);
 					board_state = BoardState::PLAYING;
 				}
-
+				processCellType(cell_position); //Handles different cell value
 				board[cell_position.x][cell_position.y]->openCell();
 			}
 		}
@@ -218,6 +218,22 @@ namespace Gameplay
 		{
 			// if position is withing the bounds of the array, then position is valid
 			return (cell_position.x >= 0 && cell_position.y >= 0 && cell_position.x < number_of_colums && cell_position.y < number_of_rows);
+		}
+
+		void BoardController::processCellType(sf::Vector2i cell_position)
+		{
+			switch (board[cell_position.x][cell_position.y]->getCellType())
+			{
+			case::Gameplay::Cell::CellType::EMPTY:
+				//processEmptyCell(cell_position); Yet to implement
+				break;
+			case::Gameplay::Cell::CellType::MINE:
+				//processMineCell(cell_position); Yet to implement
+				break;
+			default:
+				ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
+				break;
+			}
 		}
 
 		int BoardController::getMinesCount()
