@@ -33,6 +33,7 @@ namespace Gameplay
             CellState getCellState();
             void setCellState(CellState state);
             CellType getCellType();
+            void setCellType(CellType type);
             sf::Vector2i getCellPosition();
             int getMinesAround();
 
