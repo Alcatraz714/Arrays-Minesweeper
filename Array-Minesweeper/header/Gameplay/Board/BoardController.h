@@ -63,6 +63,8 @@ namespace Gameplay
             int countMinesAround(sf::Vector2i cell_position);
             bool isValidCellPosition(sf::Vector2i cell_position);
             void processCellType(sf::Vector2i cell_position);
+            void openEmptyCells(sf::Vector2i cell_position);
+            void processEmptyCell(sf::Vector2i cell_position);
 
             // To generate random values.
             std::default_random_engine random_engine;
