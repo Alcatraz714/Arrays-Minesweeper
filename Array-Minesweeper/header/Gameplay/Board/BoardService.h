@@ -6,10 +6,10 @@
 
 namespace Gameplay
 {
+    enum class GameResult;
+
     namespace Board
     {
-        using namespace Cell;
-        using namespace UI::UIElement;
         class BoardService
         {
         private:
@@ -24,10 +24,16 @@ namespace Gameplay
             void update();
             void render();
 
+            void processCellInput(Cell::CellController* cell_controller, UI::UIElement::ButtonType button_type);
+
+            BoardState getBoardState();
+            void setBoardState(BoardState state);
+            void resetBoard();
+
             int getMinesCount();
 
-            void resetBoard();
-            void processCellInput(CellController* cell_controller, ButtonType button_type);
+            void flagAllMines();
+            void showBoard();
         };
     }
 }

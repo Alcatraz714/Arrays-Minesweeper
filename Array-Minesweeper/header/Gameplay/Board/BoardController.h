@@ -12,9 +12,9 @@ namespace Gameplay
 
         enum class BoardState
         {
-            FIRST_CELL,       // The state when the player opens first cell - populate cells after first cell is opened
-            PLAYING,          // The game is in progress.
-            COMPLETED,        // The game is over.
+            FIRST_CELL,     // The state when the player opens first cell.
+            PLAYING,        // The game is in progress.
+            COMPLETED,      // The game is over.
         };
 
         class BoardController
@@ -31,47 +31,54 @@ namespace Gameplay
             void update();
             void render();
 
-            void reset();
             void processCellInput(Cell::CellController* cell_controller, UI::UIElement::ButtonType button_type);
-
-            int getMinesCount();
-            void openAllCells();
+            void reset();
 
             BoardState getBoardState();
             void setBoardState(BoardState state);
 
+            int getMinesCount();
+
+            void flagAllMines();
+            void openAllCells();
+            void showBoard();
+
         private:
             BoardView* board_view;
             Cell::CellController* board[number_of_rows][number_of_colums];
-
-            void createBoard();
-            void initializeCells();
-            void destroy();
-            void resetBoard();
-            void deleteBoard();
-
-            //Cell functions
-            void openCell(sf::Vector2i cell_position);
-            void flagCell(sf::Vector2i cell_position);
-            int flagged_cells;
-
-            //Population of cells
-            BoardState board_state;
-            void populateBoard(sf::Vector2i cell_position);
-            void populateMines(sf::Vector2i cell_position);
-            void populateCells();
-            int countMinesAround(sf::Vector2i cell_position);
-            bool isValidCellPosition(sf::Vector2i cell_position);
-            void processCellType(sf::Vector2i cell_position);
-            void openEmptyCells(sf::Vector2i cell_position);
-            void processEmptyCell(sf::Vector2i cell_position);
 
             // To generate random values.
             std::default_random_engine random_engine;
 
             // To give random seed to generator.
             std::random_device random_device;
-            
+
+            BoardState board_state;
+            int flagged_cells;
+
+            void createBoard();
+            void initializeCells();
+
+            void populateBoard(sf::Vector2i cell_position);
+            void populateMines(sf::Vector2i cell_position);
+            void populateCells();
+            int countMinesAround(sf::Vector2i cell_position);
+
+            void flagCell(sf::Vector2i cell_position);
+            void openCell(sf::Vector2i cell_position);
+            bool areAllCellOpen();
+
+            void processCellType(sf::Vector2i cell_position);
+            void processEmptyCell(sf::Vector2i cell_position);
+            void processMineCell(sf::Vector2i cell_position);
+
+            void openEmptyCells(sf::Vector2i cell_position);
+            bool isValidCellPosition(sf::Vector2i cell_position);
+
+
+            void resetBoard();
+            void deleteBoard();
+            void destroy();
         };
     }
 }
